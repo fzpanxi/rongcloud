@@ -260,7 +260,7 @@ class Utils
      */
     public static function getJson($path="")
     {
-        $files = file_get_contents(RONGCLOUOD_ROOT.$path);
+        $files = file_get_contents(dirname(__FILE__) . '/../../RongCloud/'.$path);
         return json_decode($files, true);
     }
     /**
