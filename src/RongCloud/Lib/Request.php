@@ -44,31 +44,32 @@ class Request {
         if (is_string(RongCloud::$apiUrl)) {
             return RongCloud::$apiUrl;
         }
-        $seesionId = "RongCloudServerSDKUrl";
-        if (!session_id()) {
-            @session_start();
-        }
-        $oldSessionId = session_id();
-        session_write_close();
-        //切换到 sdk Session
-        session_id($seesionId);
-        session_start();
+        // $seesionId = "RongCloudServerSDKUrl";
+        // if (!session_id()) {
+        //     @session_start();
+        // }
+        // $oldSessionId = session_id();
+        // session_write_close();
+        // //切换到 sdk Session
+        // session_id($seesionId);
+        // session_start();
 
-        if (!isset($_SESSION['curl'])) {
-            $_SESSION['curl'] = RongCloud::$apiUrl[0];
-        }
-        if ($nextUrl) {
-            $_SESSION['curl'] = $nextUrl;
-        }
+        // if (!isset($_SESSION['curl'])) {
+        //     $_SESSION['curl'] = RongCloud::$apiUrl[0];
+        // }
+        // if ($nextUrl) {
+        //     $_SESSION['curl'] = $nextUrl;
+        // }
 
-        $currentUrl = isset($_SESSION['curl']) ? $_SESSION['curl'] : RongCloud::$apiUrl[0];
-        session_write_close();
-        unset($_SESSION);
-        //切换到原始 SESSION
-        session_id($oldSessionId);
-        session_start();
-        setcookie("PHPSESSID", $oldSessionId);
-        return $currentUrl;
+        // $currentUrl = isset($_SESSION['curl']) ? $_SESSION['curl'] : RongCloud::$apiUrl[0];
+        // session_write_close();
+        // unset($_SESSION);
+        // //切换到原始 SESSION
+        // session_id($oldSessionId);
+        // session_start();
+        // setcookie("PHPSESSID", $oldSessionId);
+        // return $currentUrl;
+        return $this->serverUrl[time()%count($this->serverUrl)];
     }
 
     /**
