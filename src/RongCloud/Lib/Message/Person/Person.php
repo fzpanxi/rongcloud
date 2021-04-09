@@ -7,6 +7,7 @@ namespace RongCloud\Lib\Message\Person;
 use RongCloud\Lib\ConversationType;
 use RongCloud\Lib\Request;
 use RongCloud\Lib\Utils;
+use think\response\Json;
 
 class Person {
 
