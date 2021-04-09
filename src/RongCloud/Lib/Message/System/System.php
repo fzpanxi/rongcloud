@@ -50,9 +50,9 @@ class System {
      */
     public function send(array $Message=[]){
         $conf = $this->conf['send'];
-        if(isset($Message['content'])){
-            $Message['content'] = json_encode($Message['content']);
-        }
+//        if(isset($Message['content'])){
+//            $Message['content'] = json_encode($Message['content']);
+//        }
         $error = (new Utils())->check([
             'api'=> $conf,
             'model'=> 'message',
@@ -81,9 +81,9 @@ class System {
      */
     public function broadcast(array $Message=[]){
         $conf = $this->conf['broadcast'];
-        if(isset($Message['content'])){
-            $Message['content'] = json_encode($Message['content']);
-        }
+//        if(isset($Message['content'])){
+//            $Message['content'] = json_encode($Message['content']);
+//        }
         $verify = $this->verify['broadcast'];
         if(isset($verify['targetId'])){
             unset($verify['targetId']);
